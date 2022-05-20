@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# hibpcheck.py testing files
+list.txt
+requirements.txt

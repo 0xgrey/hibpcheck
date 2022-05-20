@@ -4,16 +4,19 @@
 # Note: Phone numbers must be in international format (i.e., +1-123-123-1234)
 
 import requests
+import argparse
 import urllib.parse
 # import json
 import time
 import sys
 
-help_text = """
+HELP_TEXT = """
 Usage: python3 hibpcheck.py <wordlist>
 Example: python3 hibpcheck emails.txt
 Note: Phone numbers must be in international format (i.e., +1-123-123-1234)
 """
+
+SLEEP_INTERVAL = 2
 
 def check_hibp(account):
     search_url = "https://haveibeenpwned.com:443/unifiedsearch/"
@@ -44,7 +47,7 @@ def main():
     # Check if wordlist argument is set
     if len(sys.argv) != 2:
         print("Error: wordlist argument is not set.")
-        print(help_text)
+        print(HELP_TEXT)
         exit()
     else:
         wordlist = open(sys.argv[1], 'r').readlines()
@@ -54,6 +57,6 @@ def main():
                 print("[!] Pwned!")
             else:
                 print("[-] Not Found")
-            time.sleep(2)
+            time.sleep(SLEEP_INTERVAL)
 
 main()

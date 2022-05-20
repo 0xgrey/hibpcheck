@@ -31,6 +31,7 @@ Sleep intervals are set at 2 seconds between reqeusts to avoid rate limiting.
  - Add argument parsing.
  - Include estimated time of completion when using a wordlist.
  - Make the current output suck less.
+   - Include quite and verbose output mode.
 
 
 
