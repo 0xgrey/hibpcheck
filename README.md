@@ -32,6 +32,7 @@ Sleep intervals are set at 2 seconds between reqeusts to avoid rate limiting.
  - Include estimated time of completion when using a wordlist.
  - Make the current output suck less.
    - Include quite and verbose output mode.
+ - Check if requesting IP address gets blocked by Cloudflare.
 
-
-
+## License
+MIT
