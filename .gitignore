@@ -130,4 +130,5 @@ dmypy.json
 
 # hibpcheck.py testing files
 list.txt
+.list.txt.swp
 requirements.txt

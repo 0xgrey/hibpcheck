@@ -10,6 +10,14 @@ import urllib.parse
 import time
 import sys
 
+BANNER = """
+  _    _ _             _           _   
+ | |_ (_) |__ _ __  __| |_  ___ __| |__
+ | ' \| | '_ \ '_ \/ _| ' \/ -_) _| / /
+ |_||_|_|_.__/ .__/\__|_||_\___\__|_\_\\
+             |_| github.com/0xgrey/hibpcheck                                              
+"""
+
 HELP_TEXT = """
 Usage: python3 hibpcheck.py <wordlist>
 Example: python3 hibpcheck emails.txt
@@ -45,18 +53,26 @@ def parse_request(hibp_req):
 
 def main():
     # Check if wordlist argument is set
-    if len(sys.argv) != 2:
-        print("Error: wordlist argument is not set.")
-        print(HELP_TEXT)
-        exit()
-    else:
+    if len(sys.argv) == 2:
+        print(BANNER)
+        print("\033[4mPwned Items:\033[0m\n")
+
         wordlist = open(sys.argv[1], 'r').readlines()
+
         for item in wordlist:
-            print(f"Trying: {item.strip()}")
+            item = item.strip()
+            print(f"Trying: {item}", end='\r')
+
             if parse_request(check_hibp(item)):
-                print("[!] Pwned!")
-            else:
-                print("[-] Not Found")
+                sys.stdout.write("\033[K") # Flush "Trying" output.
+                print(f"{item}")
+            
+            sys.stdout.write("\033[K")
             time.sleep(SLEEP_INTERVAL)
 
+    else:
+        print("Error: wordlist argument is not set.")
+        print(BANNER)
+        print(HELP_TEXT)
+        exit()
 main()
