@@ -21,7 +21,7 @@ Phone numbers must be in international format. (i.e., +1-123-123-1234)
  - Generate a wordlist with either emails or phone numbers, one account for each line.
  - The wordlist must be included in the second argument.
 
-Sleep intervals are set at 2 seconds between reqeusts to avoid rate limiting.
+Sleep intervals are set at 2 seconds between reqeusts to avoid rate limiting by Cloudflare.
 
 ## TODO:
  - Check if breached account credentials are available on [Dehashed](https://dehashed.com/)
